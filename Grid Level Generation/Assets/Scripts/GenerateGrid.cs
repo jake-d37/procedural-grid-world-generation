@@ -16,15 +16,12 @@ public class GenerateGrid : MonoBehaviour
     private float elementSize = 1f;
 
     GridObject[,] gridElements;
+    List<GridObject> gridElementsToCollapse;
 
     void Start () {
         Generate(gridLength, gridWidth);
     }
 
-    void Update() {
-        //changes elements repeatedly until no more chnages need to be made
-        //must keep a list of all changes and when that list is empty its over
-    }
 
     public void Generate(int l, int w) {
         //destroy all game objects in scene
@@ -40,43 +37,49 @@ public class GenerateGrid : MonoBehaviour
             for (int j = 0; j < w; j++){
                 gridElements[i,j] = GenerateElement(i,j,l,w);
                 Instantiate(gridElements[i,j].model, new Vector3(i * elementSize, 0f, j * elementSize), Quaternion.identity);
+
+                //add element just generated into the list of elements to collapse
+
+                //collapse all surrounding elements of the matrix to water
+                if (i == 0 || j == 0 || j == w-1 || i == l-1) {
+                    gridElements [i,j].type = 0;
+                    //remove element from list of elements to collapse
+                }
             }
         }
+
+    	ObserveGrid(); //see whats next to collapse
     }
 
-    GameObject FindModel(int T, int[,] neighbourMatrix){
-        GameObject toReturn = new GameObject();
-
-        if (T == 0){
-            toReturn = gridObject[0];
-        } else{
-            toReturn = gridObject[1];
+    void ObserveGrid() {
+        //read elements to collapse lists
+        //collapse all possibilities to suit neighbour matrices
+        GridObject smallestEntropy = new GridObject ();
+        foreach (GridObject go in gridElementsToCollapse){
+            if (smallestEntropy.possibilities.Count != 0){
+                if (go.possibilities.Count <= smallestEntropy.possibilities.Count){
+                    smallestEntropy = go;
+                }
+            } else {
+                smallestEntropy = go;
+            }
         }
-        
-        //figure out how to assign a bunch of different options for how the water is arranged (probably using neighbour matrix)
 
-        return toReturn;
+        //collapse smallest entropy to a random type within its possibilities (if any, otherwise leave blank)
+        //remove smallest entropy from the grid elements to collapse list
+
+        //repeat observation process until there are no elements to collapse
+        if (gridElementsToCollapse.Count > 0){
+            ObserveGrid ();
+        }
     }
 
     GridObject GenerateElement(int i, int j, int l, int w) {
         GridObject element = new GridObject();
 
-        element.name = "" + i + j;
-
-        //work out efficient way to define neighbour matrix here
-        //find alternative to neighbour matrix
-
-        if (i == 0 || j == 0 || i == l-1 || j == w-1) {
-            element.objType = 0;
-        } 
-        else {
-            if (gridElements[i-1,j].objType == 0 || gridElements[i, j-1].objType == 0 || gridElements[i+1,j].objType == 0 || gridElements[i, j+1].objType == 0) {
-                element.objType = 2;
-            }
-        }
-
-        element.model = FindModel(element.objType, element.neighbourMatrix);
+        element.possibilities = new List<int> {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
 
         return element;
     }
+
 }
