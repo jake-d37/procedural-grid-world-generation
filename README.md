@@ -1,6 +1,7 @@
 # procedural-grid-island-generation
  
- This file is to inform you of what integers correspond to what modules
+ To inform you of what integers correspond to what modules:
+ 
  This is necessary for the system as the "neighbour matrices" listed in the GridObject class depend on these to understand what modules can spawn next to them. So, if you want to expand on this system, these are necessary to know.
 
  0 - Full Water/Ocean 
