@@ -6,8 +6,6 @@ public class GenerateGrid : MonoBehaviour
 {
     //goofy editor stuff
     [SerializeField] private CameraMove camScript;
-    [SerializeField] private GameObject loadingScreen;
-
 
     public int gridLength = 10;
     public int gridWidth = 10;
@@ -24,14 +22,8 @@ public class GenerateGrid : MonoBehaviour
     List<GridObject> gridElementsCollapsed = new List<GridObject>();
     List<GameObject> elementsInScene = new List<GameObject>();
 
-    void Awake() {
-        loadingScreen.SetActive(false);
-    }
-
     public void GenerateOnClick() {
-        loadingScreen.SetActive(true);
         Generate(gridLength, gridWidth);
-        loadingScreen.SetActive(false);
     }
 
     void Generate(int l, int w) {
@@ -57,7 +49,14 @@ public class GenerateGrid : MonoBehaviour
             }
         }
 
-        camScript.UpdateDesPos(new Vector3 ((l/2f) * elementSize, 10f, (w/2f)* elementSize)); 
+        float height;
+        if (gridLength > gridWidth){
+            height = gridLength * elementSize;
+        } else {
+            height = gridWidth * elementSize;
+        }
+
+        camScript.UpdateDesPos(new Vector3 ((l/2f) * elementSize, height, (w/2f)* elementSize)); 
 
         //collapse one element and make it grass
         int randX = Mathf.FloorToInt(Random.Range(0 + 0.1f, gridLength-1f + 0.1f));
@@ -107,10 +106,7 @@ public class GenerateGrid : MonoBehaviour
         //repeat observation process until there are no elements to collapse
         if (gridElementsToCollapse.Count > 0){
             ObserveGrid ();
-        } else {
-            //close loading panel
-        }
-
+        } 
     }
 
     void CollapseElement (GridObject element, int T){
