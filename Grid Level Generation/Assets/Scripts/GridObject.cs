@@ -26,7 +26,7 @@ public class GridObject
             case 0:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{0,8}, new List<int>{0}},
-                    {new List<int>{0,6}, new List<int>{0}, new List<int>{0,4}},
+                    {new List<int>{0,3,6,9}, new List<int>{0}, new List<int>{0,1,4,7}},
                     {new List<int>{0}, new List<int>{0,2}, new List<int>{0}}
                 }; 
                 break;
@@ -124,7 +124,7 @@ public class GridObject
             default:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{0,8}, new List<int>{0}},
-                    {new List<int>{0,6}, new List<int>{0}, new List<int>{0,4}},
+                    {new List<int>{0,3,6,9}, new List<int>{0}, new List<int>{0,1,4,7}},
                     {new List<int>{0}, new List<int>{0,2}, new List<int>{0}}
                 }; 
                 break;
