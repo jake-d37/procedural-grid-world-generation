@@ -61,9 +61,9 @@ public class GridObject
                 break;
             case 5:
                 nm.m = new List<int>[3,3] {
-                    {null,                      new List<int>{2,5,10,11},   null},
-                    {new List<int>{4,5,10,12},  null,                       new List<int>{5,6,11,13}},
-                    {null,                      new List<int>{5,8,12,13},   null}
+                    {null,                      new List<int>{2,5,5,5,10,11},   null},
+                    {new List<int>{4,5,5,5,10,12},  null,                       new List<int>{5,5,5,6,11,13}},
+                    {null,                      new List<int>{5,5,5,8,12,13},   null}
                 }; 
                 break;
             case 6:
@@ -104,21 +104,21 @@ public class GridObject
             case 11:
                 nm.m = new List<int>[3,3] {
                     {null,                      new List<int>{3,6,13},      null},
-                    {new List<int>{4,5,10,12},  null,                       new List<int>{2,3,10}},
-                    {null,                      new List<int>{5,8,12,13},   null}
+                    {new List<int>{4,5,5,5,10,12},  null,                       new List<int>{2,3,10}},
+                    {null,                      new List<int>{5,5,5,8,12,13},   null}
                 }; 
                 break;
             case 12:
                 nm.m = new List<int>[3,3] {
-                    {null,                      new List<int>{2,5,10,11},   null},
-                    {new List<int>{7,8,13},     null,                       new List<int>{5,6,11,13}},
+                    {null,                      new List<int>{2,5,5,5,10,11},   null},
+                    {new List<int>{7,8,13},     null,                       new List<int>{5,5,5,6,11,13}},
                     {null,                      new List<int>{4,7,10},      null}
                 }; 
                 break;
             case 13:
                 nm.m = new List<int>[3,3] {
-                    {null,                      new List<int>{2,5,10,11},   null},
-                    {new List<int>{4,5,10,12},  null,                       new List<int>{8,9,12}},
+                    {null,                      new List<int>{2,5,5,5,10,11},   null},
+                    {new List<int>{4,5,5,5,10,12},  null,                       new List<int>{8,9,12}},
                     {null,                      new List<int>{6,9,11},      null}
                 }; 
                 break;

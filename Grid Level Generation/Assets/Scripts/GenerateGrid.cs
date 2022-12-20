@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GenerateGrid : MonoBehaviour
 {
+    //goofy editor stuff
     [SerializeField] private CameraMove camScript;
+    [SerializeField] private GameObject loadingScreen;
+
 
     public int gridLength = 10;
     public int gridWidth = 10;
@@ -21,8 +24,14 @@ public class GenerateGrid : MonoBehaviour
     List<GridObject> gridElementsCollapsed = new List<GridObject>();
     List<GameObject> elementsInScene = new List<GameObject>();
 
+    void Awake() {
+        loadingScreen.SetActive(false);
+    }
+
     public void GenerateOnClick() {
+        loadingScreen.SetActive(true);
         Generate(gridLength, gridWidth);
+        loadingScreen.SetActive(false);
     }
 
     void Generate(int l, int w) {
@@ -94,10 +103,6 @@ public class GenerateGrid : MonoBehaviour
             typeChosen = 0;
             CollapseElement(smallestEntropy, 5);
         }
-
-        Debug.Log("C: " + size + " T: " + typeChosen);
-
-        
 
         //repeat observation process until there are no elements to collapse
         if (gridElementsToCollapse.Count > 0){
