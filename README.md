@@ -1,4 +1,4 @@
-# procedural-grid-island-generation
+# procedural-grid-world-generation
  
 This is my take on the wave function collapse algorithm in the form of a modular, procedural world-generation system. 
 It's certainly less elegant than other versions (i.e. you must manually put in possible neighbouring elements) but it can be easily tailored to suit a variety of games.
