@@ -5,4 +5,5 @@ using UnityEngine;
 public class ElementDataHolder : MonoBehaviour
 {
     public GridObject gridObject = new GridObject();
+    public int type;
 }

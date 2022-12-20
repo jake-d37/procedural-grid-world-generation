@@ -10,17 +10,19 @@ public class GenerateGrid : MonoBehaviour
     public int gridLength = 10;
     public int gridWidth = 10;
     
-    [SerializeField]
-    private int minWidth = 5;
-    [SerializeField]
-    private GameObject[] objPrefab;
-    [SerializeField]
-    private float elementSize = 1f;
+    [SerializeField] private int minWidth = 5;
+    [SerializeField] private GameObject[] objPrefab;
+    [SerializeField] private float elementSize = 1f;
+    public GenerateScenery genSceneScript;
 
     GridObject[,] gridElements;
     List<GridObject> gridElementsToCollapse = new List<GridObject>();
     List<GridObject> gridElementsCollapsed = new List<GridObject>();
-    List<GameObject> elementsInScene = new List<GameObject>();
+    public List<GameObject> elementsInScene = new List<GameObject>();
+
+    void Awake() {
+        genSceneScript = GetComponent<GenerateScenery>();
+    }
 
     public void GenerateOnClick() {
         Generate(gridLength, gridWidth);
@@ -30,7 +32,7 @@ public class GenerateGrid : MonoBehaviour
 
         gridElementsCollapsed.Clear();
         gridElementsToCollapse.Clear();
-        
+
         foreach (GameObject g in elementsInScene){
             Destroy(g);
         }
@@ -56,7 +58,7 @@ public class GenerateGrid : MonoBehaviour
             height = gridWidth * elementSize;
         }
 
-        camScript.UpdateDesPos(new Vector3 ((l/2f) * elementSize, height, (w/2f)* elementSize)); 
+        camScript.UpdateDesPos(new Vector3 ((l/2f) * elementSize, height + 3f, (w/2f)* elementSize - (height/10f)*2f)); 
 
         //collapse one element and make it grass
         int randX = Mathf.FloorToInt(Random.Range(0 + 0.1f, gridLength-1f + 0.1f));
@@ -119,8 +121,14 @@ public class GenerateGrid : MonoBehaviour
         GameObject mod;
         if (element.number.x != 0 && element.number.y != 0 && element.number.x != gridLength-1 && element.number.y != gridWidth-1){
             mod = Instantiate(element.model, new Vector3(element.number.x * elementSize, 0f, element.number.y * elementSize), element.model.transform.rotation);
-            mod.GetComponent<ElementDataHolder>().gridObject = element;
+            ElementDataHolder holder = mod.GetComponent<ElementDataHolder>();
+            holder.gridObject = element;
+            holder.type = T;
             elementsInScene.Add(mod);
+
+            if (T == 5 && genSceneScript.sceneryOn){
+                genSceneScript.GenerateScene(element, elementSize, T);
+            }
         }
 
         //update lists
