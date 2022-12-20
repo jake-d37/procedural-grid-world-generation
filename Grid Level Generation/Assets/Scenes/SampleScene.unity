@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camScript: {fileID: 963194229}
   gridLength: 20
-  gridWidth: 30
+  gridWidth: 20
   minWidth: 5
   objPrefab:
   - {fileID: 1982591911424943633, guid: ac824357188225b42a7103e352fd8b3b, type: 3}

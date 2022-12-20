@@ -80,7 +80,7 @@ public class GenerateGrid : MonoBehaviour
             }
         }
 
-        //smallestEntropy = equalSmallestEntropy[Mathf.FloorToInt(Random.Range(0.1f,equalSmallestEntropy.Count))];
+        smallestEntropy = equalSmallestEntropy[Mathf.FloorToInt(Random.Range(0.1f,equalSmallestEntropy.Count))];
 
         //collapse smallest entropy to a random type within its possibilities
         int size = smallestEntropy.possibilities.Count;
@@ -103,7 +103,7 @@ public class GenerateGrid : MonoBehaviour
         if (gridElementsToCollapse.Count > 0){
             ObserveGrid ();
         } else {
-            HideBorders();
+            //close loading panel
         }
 
     }
@@ -115,9 +115,12 @@ public class GenerateGrid : MonoBehaviour
         //update neighbour matrix now that type is collapsed
         element.neighbourMatrix = element.FindMatrix(T);
 
-        GameObject mod = Instantiate(element.model, new Vector3(element.number.x * elementSize, 0f, element.number.y * elementSize), element.model.transform.rotation);
-        mod.GetComponent<ElementDataHolder>().gridObject = element;
-        elementsInScene.Add(mod);
+        GameObject mod;
+        if (element.number.x != 0 && element.number.y != 0 && element.number.x != gridLength-1 && element.number.y != gridWidth-1){
+            mod = Instantiate(element.model, new Vector3(element.number.x * elementSize, 0f, element.number.y * elementSize), element.model.transform.rotation);
+            mod.GetComponent<ElementDataHolder>().gridObject = element;
+            elementsInScene.Add(mod);
+        }
 
         //update lists
         gridElementsToCollapse.Remove(element);
@@ -182,16 +185,6 @@ public class GenerateGrid : MonoBehaviour
         }
 
         element.updatedNeighbours = true;
-    }
-
-    void HideBorders() {
-        foreach (GameObject g in elementsInScene){
-            GridObject gridObject = g.GetComponent<ElementDataHolder>().gridObject;
-
-            if (gridObject.number.x == 0 || gridObject.number.y == 0 || gridObject.number.x == gridLength-1 || gridObject.number.y == gridWidth-1){
-                Destroy(g);
-            }
-        }
     }
 
     GridObject GenerateElement(int i, int j, int l, int w) {
