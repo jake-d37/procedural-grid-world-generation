@@ -4,6 +4,10 @@ This is my take on the wave function collapse algorithm in the form of a modular
 It's certainly less elegant than other versions (i.e. you must manually put in possible neighbouring elements) but it can be easily tailored to suit a variety of games.
 It currently only works in two dimensions, but it can spawn in buildings and scenery (so it could work well as an RPG world if you attach colliders to the prefabs).
 
+
+
+
+
  To inform you of what integers correspond to what modules:
 
  This is necessary for the system as the "neighbour matrices" listed in the GridObject class depend on these to understand what modules can spawn next to them. So, if you want to expand on this system, these are necessary to know.
