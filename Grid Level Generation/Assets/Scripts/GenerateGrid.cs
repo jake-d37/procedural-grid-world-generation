@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GenerateGrid : MonoBehaviour
 {
-    [SerializeField]
-    private int gridLength = 10;
-    [SerializeField]
-    private int gridWidth = 10;
+    [SerializeField] private CameraMove camScript;
+
+    public int gridLength = 10;
+    public int gridWidth = 10;
+    
     [SerializeField]
     private int minWidth = 5;
     [SerializeField]
@@ -20,11 +21,18 @@ public class GenerateGrid : MonoBehaviour
     List<GridObject> gridElementsCollapsed = new List<GridObject>();
     List<GameObject> elementsInScene = new List<GameObject>();
 
-    public void Generate(int l, int w) {
+    public void GenerateOnClick() {
+        Generate(gridLength, gridWidth);
+    }
+
+    void Generate(int l, int w) {
 
         gridElementsCollapsed.Clear();
         gridElementsToCollapse.Clear();
-        //destroy all game objects in scene
+        
+        foreach (GameObject g in elementsInScene){
+            Destroy(g);
+        }
 
         if (w < minWidth)
             w = minWidth;
@@ -39,6 +47,8 @@ public class GenerateGrid : MonoBehaviour
                 gridElementsToCollapse.Add(gridElements[i,j]);
             }
         }
+
+        camScript.UpdateDesPos(new Vector3 ((l/2f) * elementSize, 10f, (w/2f)* elementSize)); 
 
         //collapse one element and make it grass
         int randX = Mathf.FloorToInt(Random.Range(0 + 0.1f, gridLength-1f + 0.1f));
@@ -55,21 +65,39 @@ public class GenerateGrid : MonoBehaviour
                 UpdateNeighbourPossibilities(element);
         }
 
-        //find element (to collapse) that has lowest entropy
-        GridObject smallestEntropy = null;
+        //find element (to collapse) that has lowest entropy, pick from random of all these lowest
+        List<GridObject> equalSmallestEntropy = new List<GridObject>();
+
+        GridObject smallestEntropy = gridElementsToCollapse[0];
         foreach (GridObject go in gridElementsToCollapse){
-            if (smallestEntropy != null){
-                if (go.possibilities.Count <= smallestEntropy.possibilities.Count){
-                    smallestEntropy = go;
-                }
-            } else {
+            if (go.possibilities.Count < smallestEntropy.possibilities.Count){
                 smallestEntropy = go;
+                equalSmallestEntropy.Clear();
+                equalSmallestEntropy.Add(go);
+            }
+            if (go.possibilities.Count == smallestEntropy.possibilities.Count){
+                equalSmallestEntropy.Add(go);
             }
         }
 
+        //smallestEntropy = equalSmallestEntropy[Mathf.FloorToInt(Random.Range(0.1f,equalSmallestEntropy.Count))];
+
         //collapse smallest entropy to a random type within its possibilities
-        int typeChosen = Mathf.FloorToInt(Random.Range (0.1f, smallestEntropy.possibilities.Count-1));
-        CollapseElement(smallestEntropy, smallestEntropy.possibilities[typeChosen]);
+        int size = smallestEntropy.possibilities.Count;
+        int typeChosen;
+
+        if (size > 0) {
+            typeChosen = Random.Range (0, size);
+            CollapseElement(smallestEntropy, smallestEntropy.possibilities[typeChosen]);
+        }
+        else {
+            typeChosen = 0;
+            CollapseElement(smallestEntropy, 5);
+        }
+
+        Debug.Log("C: " + size + " T: " + typeChosen);
+
+        
 
         //repeat observation process until there are no elements to collapse
         if (gridElementsToCollapse.Count > 0){

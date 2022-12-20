@@ -27,105 +27,105 @@ public class GridObject
             case 0:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{0,8}, new List<int>{0}},
-                    {new List<int>{0,3,6,9}, new List<int>{0}, new List<int>{0,1,4,7}},
+                    {new List<int>{0,3,6,9}, null, new List<int>{0,1,4,7}},
                     {new List<int>{0}, new List<int>{0,2}, new List<int>{0}}
                 }; 
                 break;
             case 1:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{0}, new List<int>{0}},
-                    {new List<int>{0}, new List<int>{0}, new List<int>{2,3,10}},
+                    {new List<int>{0}, null, new List<int>{2,3,10}},
                     {new List<int>{0}, new List<int>{4,10,7}, new List<int>{0}}
                 }; 
                 break;
             case 2:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{0}, new List<int>{0}},
-                    {new List<int>{2,1,11}, new List<int>{0}, new List<int>{2,3,10}},
-                    {new List<int>{0}, new List<int>{5,12,13}, new List<int>{0}}
+                    {new List<int>{2,1,11}, null, new List<int>{2,3,10}},
+                    {new List<int>{0}, new List<int>{5}, new List<int>{0}}
                 }; 
                 break;
             case 3:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{0}, new List<int>{0}},
-                    {new List<int>{1,2,11}, new List<int>{0}, new List<int>{0}},
+                    {new List<int>{1,2,11}, null, new List<int>{0}},
                     {new List<int>{0}, new List<int>{6,9,11}, new List<int>{0}}
                 }; 
                 break;
             case 4:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{1,4,12}, new List<int>{0}},
-                    {new List<int>{0}, new List<int>{0}, new List<int>{5,6,11,13}},
+                    {new List<int>{0}, null, new List<int>{5}},
                     {new List<int>{0}, new List<int>{4,7,10}, new List<int>{0}}
                 }; 
                 break;
             case 5:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{2,5,10,11}, new List<int>{0}},
-                    {new List<int>{4,5,10,12}, new List<int>{0}, new List<int>{5,6,11,13}},
+                    {new List<int>{4,5,10,12}, null, new List<int>{5,6,11,13}},
                     {new List<int>{0}, new List<int>{5,8,12,13}, new List<int>{0}}
                 }; 
                 break;
             case 6:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{3,6,13}, new List<int>{0}},
-                    {new List<int>{4,5,10,12}, new List<int>{0}, new List<int>{0}},
+                    {new List<int>{5}, null, new List<int>{0}},
                     {new List<int>{0}, new List<int>{6,9,11}, new List<int>{0}}
                 }; 
                 break;
             case 7:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{1,4,12}, new List<int>{0}},
-                    {new List<int>{0}, new List<int>{0}, new List<int>{8,9,12}},
+                    {new List<int>{0}, null, new List<int>{8,9,12}},
                     {new List<int>{0}, new List<int>{0}, new List<int>{0}}
                 }; 
                 break;
             case 8:
                 nm.m = new List<int>[3,3] {
-                    {new List<int>{0}, new List<int>{2,5,10,11}, new List<int>{0}},
-                    {new List<int>{7,8,11}, new List<int>{0}, new List<int>{8,9,10}},
+                    {new List<int>{0}, new List<int>{5}, new List<int>{0}},
+                    {new List<int>{7,8,13}, null, new List<int>{8,9,12}},
                     {new List<int>{0}, new List<int>{0}, new List<int>{0}}
                 }; 
                 break;
             case 9:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{3,6,13}, new List<int>{0}},
-                    {new List<int>{7,8,13}, new List<int>{0}, new List<int>{0}},
+                    {new List<int>{7,8,13}, null, new List<int>{0}},
                     {new List<int>{0}, new List<int>{0}, new List<int>{0}}
                 }; 
                 break;
             case 10:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{1,4,12}, new List<int>{0}},
-                    {new List<int>{1,2,11}, new List<int>{0}, new List<int>{5,6,11,13}},
+                    {new List<int>{1,2,11}, null, new List<int>{5,6,11,13}},
                     {new List<int>{0}, new List<int>{5,8,12,13}, new List<int>{0}}
                 }; 
                 break;
             case 11:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{3,6,13}, new List<int>{0}},
-                    {new List<int>{4,5,10,12}, new List<int>{0}, new List<int>{2,3,10}},
+                    {new List<int>{4,5,10,12}, null, new List<int>{2,3,10}},
                     {new List<int>{0}, new List<int>{5,8,12,13}, new List<int>{0}}
                 }; 
                 break;
             case 12:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{2,5,10,11}, new List<int>{0}},
-                    {new List<int>{7,8,13}, new List<int>{0}, new List<int>{5,6,11,13}},
+                    {new List<int>{7,8,13}, null, new List<int>{5,6,11,13}},
                     {new List<int>{0}, new List<int>{4,7,10}, new List<int>{0}}
                 }; 
                 break;
             case 13:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{2,5,10,11}, new List<int>{0}},
-                    {new List<int>{4,5,10,12}, new List<int>{0}, new List<int>{8,9,12}},
+                    {new List<int>{4,5,10,12}, null, new List<int>{8,9,12}},
                     {new List<int>{0}, new List<int>{6,9,11}, new List<int>{0}}
                 }; 
                 break;
             default:
                 nm.m = new List<int>[3,3] {
                     {new List<int>{0}, new List<int>{0,8}, new List<int>{0}},
-                    {new List<int>{0,3,6,9}, new List<int>{0}, new List<int>{0,1,4,7}},
+                    {new List<int>{0,3,6,9}, null, new List<int>{0,1,4,7}},
                     {new List<int>{0}, new List<int>{0,2}, new List<int>{0}}
                 }; 
                 break;
