@@ -248,10 +248,21 @@ MonoBehaviour:
   gridLength: 10
   gridWidth: 10
   minWidth: 5
-  gridObject:
+  objPrefab:
   - {fileID: 1982591911424943633, guid: ac824357188225b42a7103e352fd8b3b, type: 3}
-  - {fileID: 3548512149114018147, guid: 31b58fcfe5be1ca4d9d715dbac88c42b, type: 3}
+  - {fileID: 1136625318924334326, guid: 2437a6cc76e5a0d47ab8521ae15810f7, type: 3}
+  - {fileID: 4508397446962126001, guid: 56bd7f0b73ad7a94482d64b43cfadb43, type: 3}
+  - {fileID: 4806281737234556546, guid: 14e71a5cea894de42b18c5f92ab53603, type: 3}
   - {fileID: 6017900120606871969, guid: 93f3b8c48965a524d9eb4ecc0629becb, type: 3}
+  - {fileID: 3548512149114018147, guid: 31b58fcfe5be1ca4d9d715dbac88c42b, type: 3}
+  - {fileID: 6845431941604459997, guid: aec8f7b0d4019d047908d4a9fce5fe4a, type: 3}
+  - {fileID: 855650142932870036, guid: a1fba192f0cbe3241a1a438cfaf859be, type: 3}
+  - {fileID: 3833077870663237212, guid: 222c087b6dcd75d4db88f5dfa5275470, type: 3}
+  - {fileID: 8594581942934965917, guid: 7806375c689c5b942bb95cfcb5b3bfe8, type: 3}
+  - {fileID: 7593882796457830340, guid: 090b5f35a120ed546b77d08a707bdb88, type: 3}
+  - {fileID: 8005299254036611837, guid: f8a99a6eb241d784cbce4810ae89f0b3, type: 3}
+  - {fileID: 3348293100642847451, guid: 2d980d23dddadb34d87361eb31022335, type: 3}
+  - {fileID: 1565436027873154649, guid: 720a0925a8fa34c45a203b9df9c21d4a, type: 3}
   elementSize: 1
 --- !u!4 &922874446
 Transform:
