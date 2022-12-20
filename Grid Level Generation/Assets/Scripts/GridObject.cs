@@ -9,6 +9,7 @@ public class GridObject
     public NeighbourMatrix neighbourMatrix = new NeighbourMatrix ();
     public GameObject model;
     public Vector2 number = Vector2.zero;
+    public bool updatedNeighbours = false;
 
     public NeighbourMatrix FindMatrix(int T){
         NeighbourMatrix nm = new NeighbourMatrix ();

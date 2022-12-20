@@ -245,8 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932e37e2cdbe7314489da5e96df7add6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridLength: 10
-  gridWidth: 10
+  gridLength: 20
+  gridWidth: 30
   minWidth: 5
   objPrefab:
   - {fileID: 1982591911424943633, guid: ac824357188225b42a7103e352fd8b3b, type: 3}
